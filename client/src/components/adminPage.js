@@ -22,7 +22,6 @@ class Admin extends Component {
 
 
     componentDidMount = () => {
-        console.log(this.props)
         this.handelGetAllComplaints()
     }
 
@@ -82,12 +81,12 @@ class Admin extends Component {
                                             this.onChangeStatusValue(e, tag)
                                         }}>
                                             <div>
-                                                <input className="radio-button-admin" type="radio" id="resolved" name={"status" + index} value="resolved" defaultChecked={element.status === "resolved" ? true : false} />
-                                                <label className="admin-input-label" htmlFor="resolved">resolved</label>
-                                            </div>
-                                            <div>
                                                 <input className="radio-button-admin" type="radio" id="pending" name={"status" + index} value="pending" defaultChecked={element.status == "pending" ? true : false} />
                                                 <label className="admin-input-label" htmlFor="pending">pending</label>
+                                            </div>
+                                            <div>
+                                                <input className="radio-button-admin" type="radio" id="resolved" name={"status" + index} value="resolved" defaultChecked={element.status === "resolved" ? true : false} />
+                                                <label className="admin-input-label" htmlFor="resolved">resolved</label>
                                             </div>
                                             <div>
                                                 <input className="radio-button-admin" type="radio" id="dismissed" name={"status" + index} value="dismissed" defaultChecked={element.status === "dismissed" ? true : false} />

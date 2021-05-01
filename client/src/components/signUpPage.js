@@ -29,7 +29,6 @@ class Signup extends Component {
         let conf_password = this.state.conf_password
         let role = this.state.role
 
-
         if (email === "") {
             toast.error('please fill out the E-mail address', {
                 position: "top-center",
@@ -86,7 +85,7 @@ class Signup extends Component {
         }
         else {
             this.setState({ isLoading: true })
-            axios.post("http://localhost:3001/signup", { email: email, password: password, role: 'admin' }).then((res) => {
+            axios.post("http://localhost:3001/signup", { email: email, password: password, role: role }).then((res) => {
 
                 if (res.data === "new user added successfully ") {
                     this.setState({ isLoading: false })
