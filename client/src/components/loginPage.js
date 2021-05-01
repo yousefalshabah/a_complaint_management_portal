@@ -55,13 +55,12 @@ class Login extends Component {
                         progress: undefined,
                     });
                 } else {
-                    //Got token
+
                     const token = res.data.token;
                     const role = res.data.user_role
                     const email = res.data.email
 
-                    console.log(email)
-                    // Token --> Map --> Header, --> Access reaqct 
+
                     localStorage.setItem('token', token);
                     localStorage.setItem('role', role);
                     localStorage.setItem('email', email);
@@ -77,7 +76,6 @@ class Login extends Component {
     }
     handleValidateEmail = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        // console.log(re.test(String(email).toLowerCase()));
         if (re.test(String(email).toLowerCase())) {
             this.setState({ email: email })
         } else {

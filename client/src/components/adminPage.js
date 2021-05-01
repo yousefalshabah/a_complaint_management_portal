@@ -28,7 +28,6 @@ class Admin extends Component {
         axios.get("http://localhost:3001/getAllComplaints", {
             params: {}
         }).then((res) => {
-            console.log(`res.data`, res.data)
             this.setState({ customer_complaint: res.data })
         })
     }
@@ -39,11 +38,11 @@ class Admin extends Component {
     handelUpdateStatus = (element, index) => {
         let status = this.state["status" + index]
         let id = element.id
-        axios.post("http://localhost:3001/updateComplaintStatus", {
+        axios.put("http://localhost:3001/updateComplaintStatus", {
             status: status,
             id: id
         }).then((res) => {
-            console.log(`res.data`, res.data)
+            this.handelGetAllComplaints();
         })
     }
     render() {
@@ -78,28 +77,28 @@ class Admin extends Component {
                     <div className="admin-box">
                         {this.state.customer_complaint.length > 0 ? this.state.customer_complaint.map((element, index) => {
                             return (
-                                <div className="admin-card">
+                                <div key={index} className="admin-card">
                                     <div className="admin-inner-card">
                                         <div>client E-mail : {element.email}</div>
                                         <div>Complaint Details : {element.complaint}</div>
                                         <div>Complaint status : {element.status}</div>
                                     </div>
-                                    <div className="admin-inner-card" style={{ marginTop: 10 }}>
-                                        <div className="radio-style" onChange={(e) => {
+                                    <div className="admin-inner-card" style={{ paddingTop: 10 }}>
+                                        <div className="radio-style" style={{ paddingTop: 20 }} onChange={(e) => {
                                             let tag = "status" + index
                                             this.onChangeStatusValue(e, tag)
                                         }}>
                                             <div>
                                                 <input className="radio-button-admin" type="radio" id="resolved" name={"status" + index} value="resolved" defaultChecked={element.status === "resolved" ? true : false} />
-                                                <label className="admin-input-label" for="resolved">resolved</label>
+                                                <label className="admin-input-label" htmlFor="resolved">resolved</label>
                                             </div>
                                             <div>
                                                 <input className="radio-button-admin" type="radio" id="pending" name={"status" + index} value="pending" defaultChecked={element.status == "pending" ? true : false} />
-                                                <label className="admin-input-label" for="pending">pending</label>
+                                                <label className="admin-input-label" htmlFor="pending">pending</label>
                                             </div>
                                             <div>
                                                 <input className="radio-button-admin" type="radio" id="dismissed" name={"status" + index} value="dismissed" defaultChecked={element.status === "dismissed" ? true : false} />
-                                                <label className="admin-input-label" for="dismissed">dismissed</label>
+                                                <label className="admin-input-label" htmlFor="dismissed">dismissed</label>
                                             </div>
                                         </div>
                                         <div>
@@ -110,7 +109,7 @@ class Admin extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : (<div className="no-complaint" >No available claims</div>)}
+                        }) : (<div className="admin-no-complaint" >No available complaints</div>)}
                     </div>
 
                 </div>

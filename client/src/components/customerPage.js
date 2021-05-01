@@ -26,13 +26,11 @@ class Customer extends Component {
 
     handelFitchComplaint = () => {
         var email = localStorage.getItem('email')
-        console.log(`email`, email)
         axios.get("http://localhost:3001/customerComplaints", {
             params: {
                 email: email
             }
         }).then((res) => {
-            console.log(`res.data`, res.data)
             this.setState({ customer_complaint: res.data })
         })
     }
@@ -123,14 +121,14 @@ class Customer extends Component {
                             }
                         </div>
                         <div className="customer-right">
-                            {this.state.customer_complaint.length > 0 ? this.state.customer_complaint.map((element) => {
+                            {this.state.customer_complaint.length > 0 ? this.state.customer_complaint.map((element, index) => {
                                 return (
-                                    <div className="customer-card">
+                                    <div key={index} className="customer-card">
                                         complaint Details : {element.complaint} <br />
                                         complaint status : {element.status}
                                     </div>
                                 )
-                            }) : (<div className="no-complaint" >No available claims</div>)}
+                            }) : (<div className="no-complaint">No available complaints</div>)}
 
                         </div>
                     </div>

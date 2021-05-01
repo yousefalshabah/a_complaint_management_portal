@@ -4,7 +4,6 @@ import SignUp from "./components/signUpPage"
 import Login from "./components/loginPage"
 import Admin from "./components/adminPage"
 import Customer from "./components/customerPage"
-import axios from "axios"
 
 import './App.css';
 
@@ -79,11 +78,6 @@ class App extends Component {
         this.handelChangePage("customer")
       }
     }
-
-
-    // axios.get("http://localhost:3001/", {}).then((res) => {
-    //   console.log(`res`, res)
-    // })
   }
   singinAuth() {
     const token = localStorage.getItem('token')
@@ -119,10 +113,6 @@ class App extends Component {
                       <a className="home-screen-buttons" onClick={() => {
                         this.handelChangePage("login")
                       }} >Login</a>
-
-
-                      {/* <button className="home-screen-buttons ">Registration </button>
-                      <button className="home-screen-buttons">LogIn</button> */}
                     </div>
                   </div>
                 </div>

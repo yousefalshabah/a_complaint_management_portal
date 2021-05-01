@@ -69,7 +69,6 @@ app.post('/submit', (req, res) => {
 app.get("/customerComplaints", (req, res) => {
     var email = req.query.email;
 
-    // console.log(req.query.email)
     searchCustomerComplaint = "SELECT * FROM `customer_complaint` WHERE email = ?"
     const params = [email]
     DB.query(searchCustomerComplaint, params, (err, result) => {
@@ -82,11 +81,10 @@ app.get("/customerComplaints", (req, res) => {
 })
 
 
-app.post("/updateComplaintStatus", (req, res) => {
+app.put("/updateComplaintStatus", (req, res) => {
     var id = req.body.id;
     var status = req.body.status
-    return console.log(req.body)
-    updateQuy = "UPDATE `customer_complaint` SET status = ? WHERE id = ?;`"
+    updateQuy = "UPDATE `customer_complaint` SET status = ? WHERE id = ?;"
     const params = [status, id]
     DB.query(updateQuy, params, (err, result) => {
         if (err) {
@@ -98,7 +96,6 @@ app.post("/updateComplaintStatus", (req, res) => {
 })
 
 app.get("/getAllComplaints", (req, res) => {
-    // console.log(req.query.email)
     searchCustomerComplaint = "SELECT * FROM `customer_complaint`"
     const params = []
     DB.query(searchCustomerComplaint, params, (err, result) => {
@@ -127,7 +124,6 @@ app.post('/login', (req, res) => {
             bcrypt.compare(password, existingHashedPassword).then(function (isMatching) {
 
                 if (isMatching) {
-                    console.log(result[0].name)
                     const token = jwt.sign({
                         email: result[0].name
                     }, SECRET_KEY, {
@@ -169,5 +165,5 @@ app.get("/", (req, res) => {
 
 
 app.listen(port, () => {
-    console.log("hello amman we are on port " + port)
+    console.log("listening on port " + port)
 })
