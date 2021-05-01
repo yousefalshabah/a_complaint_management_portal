@@ -32,6 +32,16 @@
     font-size: xx-large;
     cursor: pointer;
 }
+
+.fa-door-open {
+    float: left;
+    position: fixed;
+    left: 2%;
+    margin-top: 9px !important;
+    color: #f2f2f2;
+    font-size: xx-large;
+    cursor: pointer;
+}
 .company-name {
     color: #f2f2f2;
     margin-top: 8px !important;
@@ -56,6 +66,96 @@
     justify-content: space-evenly;
     text-align: center;
     flex-direction: column;
+}
+.customer-App {
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 23%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.customer-box {
+    width: 1000px;
+    height: 450px;
+    background-color: #4f7bff;
+    border-radius: 32px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.admin-box {
+    width: 1000px;
+    height: 450px;
+    background-color: #4f7bff;
+    border-radius: 32px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+.customer-left {
+    width: 100%;
+    border-right: #f2f2f2 solid 2px;
+}
+.customer-right {
+    border-left: #f2f2f2 solid 2px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow: hidden;
+    position: relative;
+}
+.customer-card {
+    margin: 10px;
+    width: 98%;
+    height: 80px;
+    background-color: #f2f2f2;
+    border-radius: 16px;
+    color: #4f7bff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.admin-card {
+    margin: 10px;
+    width: 98%;
+    height: 100px;
+    background-color: #f2f2f2;
+    border-radius: 16px;
+    color: #4f7bff;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    flex-direction: column;
+}
+.admin-inner-card {
+    display: flex;
+    justify-content: space-evenly;
+    /* margin: 10px; */
+}
+
+.no-complaint {
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #f2f2f2;
+    font-size: 25px;
 }
 .clipLoader {
     width: 700px;
@@ -106,16 +206,80 @@
     cursor: pointer;
 }
 
+.admin-screen-buttons {
+    color: #f2f2f2 !important;
+    /* text-transform: uppercase; */
+    background: #4f7bff;
+    height: 10px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: large;
+    padding: 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease 0s;
+    margin-bottom: 10px;
+}
+.admin-screen-buttons:hover {
+    color: #f2f2f2 !important;
+    border-radius: 50px;
+    text-decoration: none;
+    border-color: #4f7bff !important;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.customer-screen-buttons {
+    color: #181f36 !important;
+    text-transform: uppercase;
+    background: #f2f2f2;
+    height: 90%;
+    width: 85%;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    padding: 20px;
+    /* border: 4px solid #181f36 !important; */
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 70px;
+    transition: all 0.3s ease 0s;
+}
+.customer-screen-buttons:hover {
+    color: #4f7bff !important;
+    border-radius: 50px;
+    text-decoration: none;
+    border-color: #4f7bff !important;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
 .input-field {
     width: 95%;
     height: 20px;
     padding: 10px;
     font-size: larger;
 }
-
+.customer-input-field {
+    width: 93%;
+    height: 200px;
+    padding: 10px;
+    font-size: larger;
+}
 .input-label {
     color: #f2f2f2;
     font-size: x-large;
+    text-align: left;
+    margin-left: 10px;
+}
+.admin-input-label {
+    color: #4f7bff;
+    font-size: large;
     text-align: left;
     margin-left: 10px;
 }

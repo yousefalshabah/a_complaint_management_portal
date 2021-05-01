@@ -50,7 +50,67 @@ app.post('/signup', (req, res) => {
 })
 
 
-app.post('/login', function (req, res) {
+app.post('/submit', (req, res) => {
+    var email = req.body.email;
+    var complaint = req.body.complaint
+
+    const createComplaint = "INSERT INTO `customer_complaint` (`email`,`complaint`, `status`) VALUES (?,?,?);"
+    const params = [email, complaint, "pending"]
+    DB.query(createComplaint, params, (err, result) => {
+        if (err) {
+            return res.send(err)
+        }
+        res.send("new complaint added successfully ")
+    })
+})
+
+
+
+app.get("/customerComplaints", (req, res) => {
+    var email = req.query.email;
+
+    // console.log(req.query.email)
+    searchCustomerComplaint = "SELECT * FROM `customer_complaint` WHERE email = ?"
+    const params = [email]
+    DB.query(searchCustomerComplaint, params, (err, result) => {
+        if (err) {
+            return res.send(err)
+        }
+        res.send(result)
+    })
+
+})
+
+
+app.post("/updateComplaintStatus", (req, res) => {
+    var id = req.body.id;
+    var status = req.body.status
+    return console.log(req.body)
+    updateQuy = "UPDATE `customer_complaint` SET status = ? WHERE id = ?;`"
+    const params = [status, id]
+    DB.query(updateQuy, params, (err, result) => {
+        if (err) {
+            return res.send(err)
+        }
+        res.send(result)
+    })
+
+})
+
+app.get("/getAllComplaints", (req, res) => {
+    // console.log(req.query.email)
+    searchCustomerComplaint = "SELECT * FROM `customer_complaint`"
+    const params = []
+    DB.query(searchCustomerComplaint, params, (err, result) => {
+        if (err) {
+            return res.send(err)
+        }
+        res.send(result)
+    })
+
+})
+
+app.post('/login', (req, res) => {
     var email = req.body.email;
     var password = req.body.password;
 
@@ -67,15 +127,17 @@ app.post('/login', function (req, res) {
             bcrypt.compare(password, existingHashedPassword).then(function (isMatching) {
 
                 if (isMatching) {
+                    console.log(result[0].name)
                     const token = jwt.sign({
                         email: result[0].name
                     }, SECRET_KEY, {
-                        expiresIn: 1000
+                        expiresIn: "1h"
                     });
 
                     return res.send({
                         token: token,
-                        user_role: result[0].role
+                        user_role: result[0].role,
+                        email: result[0].name
                     });
                 } else {
                     return res.status(401).send({

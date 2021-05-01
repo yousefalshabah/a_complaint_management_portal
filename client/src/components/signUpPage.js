@@ -187,7 +187,6 @@ class Signup extends Component {
                                         <input className="radio-button" type="radio" id="customer" name="role" value="customer" />
                                         <label className="input-label" for="customer">Customer</label>
                                     </div>
-
                                 </div>
                                 <div>
                                     <a className="home-screen-buttons" onClick={() => {

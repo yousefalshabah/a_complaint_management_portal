@@ -44,8 +44,6 @@ class Login extends Component {
         }
         else {
             axios.post("http://localhost:3001/login", { email: email, password: password }).then((res) => {
-                console.log(`res`, res)
-
                 if (res.data === "E-mail address dose note exists") {
                     toast.error(res.data, {
                         position: "top-center",
@@ -59,10 +57,14 @@ class Login extends Component {
                 } else {
                     //Got token
                     const token = res.data.token;
-                    const role = res.data.role
+                    const role = res.data.user_role
+                    const email = res.data.email
+
+                    console.log(email)
                     // Token --> Map --> Header, --> Access reaqct 
                     localStorage.setItem('token', token);
-                    localStorage.setItem('role', role)
+                    localStorage.setItem('role', role);
+                    localStorage.setItem('email', email);
                     if (role === "admin") {
                         this.props.handelChangePage("admin")
                     } else {

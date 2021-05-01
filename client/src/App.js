@@ -72,7 +72,6 @@ class App extends Component {
   componentDidMount = () => {
     const token = localStorage.getItem('token')
     const role = localStorage.getItem('role')
-
     if (token && token.length > 10) {
       if (role === "admin") {
         this.handelChangePage("admin")
