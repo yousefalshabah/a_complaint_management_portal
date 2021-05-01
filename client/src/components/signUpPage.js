@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import ClipLoader from "react-spinners/ClipLoader";
 import 'react-toastify/dist/ReactToastify.css';
+import { withRouter } from 'react-router-dom';
+
 
 import axios from "axios"
 
@@ -88,7 +90,8 @@ class Signup extends Component {
 
                 if (res.data === "new user added successfully ") {
                     this.setState({ isLoading: false })
-                    this.props.handelChangePage("login")
+                    this.props.history.push("/login")
+
                 } else {
                     this.setState({ isLoading: false })
                     toast.error(res.data, {
@@ -145,7 +148,8 @@ class Signup extends Component {
                 <div className="main-container">
                     <header className="App-header">
                         <i className="fas fa-arrow-circle-left" onClick={() => {
-                            this.props.handelChangePage("homepage")
+                            this.props.history.push("/")
+
                         }}></i>
                         <h1 className="company-name">ABC Company</h1>
                     </header>
@@ -189,13 +193,12 @@ class Signup extends Component {
                                 </div>
                                 <div>
                                     <a className="home-screen-buttons" onClick={() => {
-                                        // this.props.handelChangePage("login")
-
+                                        this.props.history.push('/login');
                                         this.handelCreateNewAccount()
                                     }} >Register</a>
                                 </div>
-                            </div>)}
-
+                            </div>
+                        )}
                     </div>
                 </div>
             </div >
@@ -203,4 +206,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default withRouter(Signup);

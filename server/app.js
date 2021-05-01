@@ -37,7 +37,7 @@ app.post('/signup', (req, res) => {
             return res.send("E-mail address are used")
         } else {
             const createUserQry = "INSERT INTO `user_info` (`name`,`role`, `password`,`phone_number` ) VALUES (?,?,?,?);"
-            const params = [email, role, hashPass, 123]
+            const params = [email, role, hashPass, 0]
             DB.query(createUserQry, params, (err, result) => {
                 if (err) {
                     return res.send(err)
@@ -77,7 +77,6 @@ app.get("/customerComplaints", (req, res) => {
         }
         res.send(result)
     })
-
 })
 
 

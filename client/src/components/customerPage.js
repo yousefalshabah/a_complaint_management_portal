@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
+import { withRouter } from 'react-router-dom';
+
 
 
 class Customer extends Component {
@@ -84,7 +86,8 @@ class Customer extends Component {
                     <i className="fas fa-door-open" onClick={() => {
                         {
                             localStorage.clear()
-                            this.props.handelChangePage("logout")
+                            this.props.history.push("/")
+
                         }
                     }} >
                         {" - " + "logout"}
@@ -141,4 +144,4 @@ class Customer extends Component {
     }
 }
 
-export default Customer;
+export default withRouter(Customer);

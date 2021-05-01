@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
+import { withRouter } from 'react-router-dom';
+
 
 
 class Login extends Component {
@@ -65,9 +67,11 @@ class Login extends Component {
                     localStorage.setItem('role', role);
                     localStorage.setItem('email', email);
                     if (role === "admin") {
-                        this.props.handelChangePage("admin")
+                        this.props.history.push("/admin")
+
                     } else {
-                        this.props.handelChangePage("customer")
+                        this.props.history.push("/customer")
+
                     }
                 }
             })
@@ -109,7 +113,8 @@ class Login extends Component {
                     <div className="main-container">
                         <header className="App-header">
                             <i className="fas fa-arrow-circle-left" onClick={() => {
-                                this.props.handelChangePage("homepage")
+                                this.props.history.push("/")
+
                             }}></i>
                             <h1 className="company-name">ABC Company</h1>
                         </header>
@@ -134,7 +139,6 @@ class Login extends Component {
 
                                 <div>
                                     <a className="home-screen-buttons" onClick={() => {
-                                        // this.props.handelChangePage("login")
                                         this.handelLogin()
                                     }} >Login</a>
                                 </div>
@@ -147,4 +151,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

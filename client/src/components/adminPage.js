@@ -1,6 +1,8 @@
 // import React from 'react';
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+
+import { withRouter } from 'react-router-dom';
+
 
 import axios from "axios"
 
@@ -20,6 +22,7 @@ class Admin extends Component {
 
 
     componentDidMount = () => {
+        console.log(this.props)
         this.handelGetAllComplaints()
     }
 
@@ -48,22 +51,12 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                />
+
                 <header className="App-header">
                     <i className="fas fa-door-open" onClick={() => {
                         {
                             localStorage.clear()
-                            this.props.handelChangePage("logout")
+                            this.props.history.push("/")
                         }
                     }} >
                         {" - " + "logout"}
@@ -118,4 +111,4 @@ class Admin extends Component {
     }
 }
 
-export default Admin;
+export default withRouter(Admin);
